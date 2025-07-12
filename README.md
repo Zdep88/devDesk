@@ -8,12 +8,13 @@ sudo apt upgrade -y &&
 sudo apt install -y git &&
 cd ~ &&
 git clone https://github.com/Zdep88/devDesk.git &&
-sh ~/devDesk/newDesk.sh
+cd ~/devDesk &&
+sh devDesk.sh
 ```
 
 ## Bash
 
-[New Desk](https://github.com/Zdep88/devDesk/blob/main/newDesk.sh)
+[Dev Desk](https://github.com/Zdep88/devDesk/blob/main/devDesk.sh)
 
 [Create Sudo User](https://github.com/Zdep88/devDesk/blob/main/sudoer.sh)
 
