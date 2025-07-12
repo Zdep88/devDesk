@@ -28,13 +28,15 @@ cat ~/.ssh/id_ed25519.pub
 
 ## Bash
 
-[Create Sudo User](https://github.com/Zdep88/devDesk/blob/main/bash/createSudoer.sh)
+[Create Sudo User](https://github.com/Zdep88/devDesk/blob/main/bash/sudoer.sh)
 
-[Create SSH Keys](https://github.com/Zdep88/devDesk/blob/main/bash/createSshKeys.sh)
+[Create SSH Keys](https://github.com/Zdep88/devDesk/blob/main/bash/ssh.sh)
 
-[Install & Setup Git](https://github.com/Zdep88/devDesk/blob/main/bash/installAndSetupGit.sh)
+[Install & Setup Git](https://github.com/Zdep88/devDesk/blob/main/bash/git.sh)
 
-[Install Node, NPM, NVM](https://github.com/Zdep88/devDesk/blob/main/bash/installNodeNpmNvm.sh)
+[Install Node, NPM, NVM](https://github.com/Zdep88/devDesk/blob/main/bash/node.sh)
+
+[Install & Setup NginX](https://github.com/Zdep88/devDesk/blob/main/bash/nginx.sh)
 
 ## Tmux
 
