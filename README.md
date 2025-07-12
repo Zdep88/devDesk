@@ -13,6 +13,8 @@ sh ~/devDesk/newDesk.sh
 
 ## Bash
 
+[New Desk](https://github.com/Zdep88/devDesk/blob/main/newDesk.sh)
+
 [Create Sudo User](https://github.com/Zdep88/devDesk/blob/main/sudoer.sh)
 
 [Create SSH Keys](https://github.com/Zdep88/devDesk/blob/main/ssh.sh)
