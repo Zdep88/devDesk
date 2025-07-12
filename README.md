@@ -16,6 +16,8 @@ sh devDesk.sh
 
 [Dev Desk](https://github.com/Zdep88/devDesk/blob/main/devDesk.sh)
 
+[Server Desk](https://github.com/Zdep88/devDesk/blob/main/serverDesk.sh)
+
 [Create Sudo User](https://github.com/Zdep88/devDesk/blob/main/sudoer.sh)
 
 [Create SSH Keys](https://github.com/Zdep88/devDesk/blob/main/ssh.sh)
