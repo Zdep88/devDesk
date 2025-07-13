@@ -7,23 +7,22 @@ read -p "Enter your full name : " name &&
 read -p "Enter your email : " email &&
 sudo apt update &&
 sudo apt upgrade -y &&
-
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash &&
 source ~/.bashrc &&
 nvm install --lts &&
 nvm use --lts &&
 npm install -g npm@latest &&
-
 sudo apt install -y git &&
 git config --global user.name "$name" &&
 git config --global user.email "$email" &&
-
 sudo apt install -y nginx &&
 sudo sed -i 's/^[[:space:]]*#[[:space:]]*server_names_hash_bucket_size/        server_names_hash_bucket_size/' /etc/nginx/nginx.conf &&
 sudo rm /etc/nginx/sites-enabled/default &&
 sudo nginx -t &&
 sudo systemctl restart nginx &&
-
+sudo apt install -y snapd &&
+sudo snap install --classic certbot &&
+sudo ln -s /snap/bin/certbot /usr/bin/certbot &&
 ssh-keygen -t ed25519 -C "$email" -f ~/.ssh/id_ed25519 -N "" &&
 eval "$(ssh-agent -s)" &&
 ssh-add ~/.ssh/id_ed25519 &&
@@ -39,14 +38,11 @@ echo "$key"
 read -p "New site URL : " site_url &&
 read -p "Git ssh url : " git_url &&
 git_name=$(basename "$git_url" .git) &&
-
 mkdir ~/code
 cd ~/code &&
 git clone "$git_url" &&
-
 sudo mkdir /var/www/$site_url &&
 sudo cp -r ~/code/$git_name/* /var/www/$site_url &&
-
 sudo touch /etc/nginx/sites-available/$site_url &&
 sudo tee /etc/nginx/sites-available/$site_url > /dev/null <<EOF
 server {
@@ -62,7 +58,8 @@ server {
 EOF
 sudo ln -s /etc/nginx/sites-available/$site_url /etc/nginx/sites-enabled/ &&
 sudo nginx -t &&
-sudo systemctl restart nginx
+sudo systemctl restart nginx &&
+sudo certbot --nginx
 ```
 
 ## Dynamic server bloc
