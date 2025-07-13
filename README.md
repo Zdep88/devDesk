@@ -33,9 +33,6 @@ echo "Public SSH key :" &&
 echo "$key"
 ```
 
-## purge
-
-
 ## New hosted static
 
 ```sh
