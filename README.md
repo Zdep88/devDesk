@@ -3,24 +3,25 @@
 ## New desk
 
 ```sh
-echo
 read -p "Enter your full name : " name
 read -p "Enter your email : " email
 sudo apt update &&
 sudo apt upgrade -y &&
 sudo apt install -y git &&
-git config --global user.name "$name" &&
-git config --global user.email "$email" &&
-ssh-keygen -t ed25519 -C "$email" -f ~/.ssh/id_ed25519 -N "" &&
-eval "$(ssh-agent -s)" &&
-ssh-add ~/.ssh/id_ed25519 &&
-key=$(cat ~/.ssh/id_ed25519.pub)
+sudo apt install -y nginx &&
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash &&
 source ~/.bashrc &&
 nvm install --lts &&
 nvm use --lts &&
 npm install -g npm@latest &&
-echo
+git config --global user.name "$name" &&
+git config --global user.email "$email" &&
+sudo sed -i 's/^[[:space:]]*#[[:space:]]*server_names_hash_bucket_size/        server_names_hash_bucket_size/' /etc/nginx/nginx.conf &&
+sudo systemctl restart nginx &&
+ssh-keygen -t ed25519 -C "$email" -f ~/.ssh/id_ed25519 -N "" &&
+eval "$(ssh-agent -s)" &&
+ssh-add ~/.ssh/id_ed25519 &&
+key=$(cat ~/.ssh/id_ed25519.pub)
 echo "Public SSH key :"
 echo "$key"
 ```
