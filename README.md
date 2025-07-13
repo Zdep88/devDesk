@@ -35,8 +35,8 @@ echo "$key"
 ## New static site
 
 ```sh
-read -p "New site URL : " site_url &&
 read -p "Git ssh url : " git_url &&
+read -p "New site URL : " site_url &&
 git_name=$(basename "$git_url" .git) &&
 mkdir ~/code
 cd ~/code &&
@@ -62,8 +62,17 @@ sudo systemctl restart nginx &&
 sudo certbot --nginx
 ```
 
-## Dynamic server bloc
+## New dynamic site
 
+```sh
+read -p "New site URL : " site_url &&
+read -p "Git ssh url : " git_url &&
+git_name=$(basename "$git_url" .git) &&
+mkdir ~/code
+cd ~/code &&
+git clone "$git_url" &&
+sudo touch /etc/nginx/sites-available/$site_url &&
+sudo tee /etc/nginx/sites-available/$site_url > /dev/null <<EOF
 server {
         listen 80;
         listen [::]:80;
@@ -81,6 +90,13 @@ server {
                 proxy_cache_bypass $http_upgrade;
         }
 }
+EOF
+sudo ln -s /etc/nginx/sites-available/$site_url /etc/nginx/sites-enabled/ &&
+sudo nginx -t &&
+sudo systemctl restart nginx &&
+sudo certbot --nginx &&
+tmux new -s $git_name
+```
 
 ## Tmux
 
