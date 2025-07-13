@@ -33,7 +33,7 @@ echo "Public SSH key :" &&
 echo "$key"
 ```
 
-## New hosted static
+## New static site
 
 ```sh
 read -p "New site URL : " site_url &&
