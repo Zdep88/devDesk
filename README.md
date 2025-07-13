@@ -65,8 +65,11 @@ sudo certbot --nginx
 ## New dynamic site
 
 ```sh
-read -p "New site URL : " site_url &&
 read -p "Git ssh url : " git_url &&
+read -p "New site URL : " site_url &&
+echo "Ports already used :" &&
+grep -h "proxy_pass.*localhost:" /etc/nginx/sites-enabled/* 2>/dev/null | grep -o "localhost:[0-9]\+" | cut -d: -f2 | sort -n | uniq &&
+read -p "Application port : " app_port &&
 git_name=$(basename "$git_url" .git) &&
 mkdir ~/code
 cd ~/code &&
@@ -79,7 +82,7 @@ server {
         server_name $site_url;
         
         location / {
-                proxy_pass http://localhost:3000;
+                proxy_pass http://localhost:$app_port;
                 proxy_http_version 1.1;
                 proxy_set_header Upgrade $http_upgrade;
                 proxy_set_header Connection 'upgrade';
