@@ -12,7 +12,7 @@ git clone $giturl &&
 sudo touch /etc/nginx/sites-available/$siteurl &&
 sudo mkdir /var/www/$siteurl &&
 while true; do
-    read -p "Site type ? (static/dynamic/custom) " answer &&
+    read -p "Site type ? (static/dynamic/custom) " answer
     if [[ "$answer" == "static" ]]; then
         echo "static" &&
         sudo cp -r ~/$gitname/* /var/www/$siteurl &&
