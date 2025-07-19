@@ -11,7 +11,7 @@ cd ~/ &&
 git clone $giturl &&
 echo "Cloned $gitname" &&
 echo "Creating site $siteurl" &&
-echo "gitname : $gitname" &&
+echo "gitname : $gitname"
 
 
 # if [[ "$answer" == "static" ]]; then
