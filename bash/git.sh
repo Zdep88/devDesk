@@ -6,5 +6,5 @@ fi
 if [ -z "$email" ]; then
   read -p "Enter your email : " email
 fi
-echo "name $name" &&
-echo "email $email"
+git config --global user.name "$name" &&
+git config --global user.email "$email"
