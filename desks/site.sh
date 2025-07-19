@@ -8,11 +8,10 @@ if [ -z $siteurl ]; then
 fi &&
 gitname=$(basename $giturl .git) &&
 cd ~/ &&
-git clone $giturl &&
+# git clone $giturl &&
 echo "Cloned $gitname" &&
 echo "Creating site $siteurl" &&
 echo "gitname : $gitname"
-
 
 # if [[ "$answer" == "static" ]]; then
 #     echo "static" &&
