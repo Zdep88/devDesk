@@ -2,9 +2,9 @@ name=$1 &&
 email=$2 &&
 if [ -z "$name" ]; then
   read -p "Enter your full name : " name
-fi
+fi &&
 if [ -z "$email" ]; then
   read -p "Enter your email : " email
-fi
+fi &&
 git config --global user.name "$name" &&
 git config --global user.email "$email"
