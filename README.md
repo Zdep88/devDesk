@@ -1,17 +1,10 @@
 # devDesk
 
 ```sh
-sudo apt update &&
-sudo apt upgrade -y &&
 sudo apt install -y git &&
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash &&
-source ~/.bashrc &&
-nvm install --lts &&
-nvm use --lts &&
-npm install -g npm@latest &&
-cd ~/
-git clone https://github.com/Zdep88/devDesk.git
-cd devDesk
+cd ~/ &&
+git clone https://github.com/Zdep88/devDesk.git &&
+cd devDesk &&
 npm start
 ```
 
