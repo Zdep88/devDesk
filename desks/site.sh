@@ -7,8 +7,7 @@ if [ -z $siteurl ]; then
     read -p "New site URL : " siteurl
 fi &&
 gitname=$(basename $giturl .git) &&
-mkdir ~/code &&
-cd ~/code &&
+cd ~/ &&
 git clone $giturl &&
 sudo touch /etc/nginx/sites-available/$siteurl &&
 while true; do
@@ -16,7 +15,7 @@ while true; do
     sudo mkdir /var/www/$siteurl &&
     if [[ "$answer" == "static" ]]; then
         echo "static" &&
-        sudo cp -r ~/code/$gitname/* /var/www/$siteurl &&
+        sudo cp -r ~/$gitname/* /var/www/$siteurl &&
         sudo cp ~/devDesk/templates/static_server_bloc.txt /etc/nginx/sites-available/$siteurl &&
         sed -i "s/URL/$siteurl/g" ~/etc/nginx/sites-available/$siteurl &&
         break
@@ -28,6 +27,7 @@ while true; do
         break
     fi
 done
+sudo certbot --nginx
 
 # else
 #     echo "Ports already used :" &&

@@ -12,4 +12,3 @@ while true; do
         break
     fi
 done
-sudo certbot --nginx
