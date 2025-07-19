@@ -4,11 +4,12 @@
 sudo apt install -y git &&
 cd ~/ &&
 git clone https://github.com/Zdep88/devDesk.git &&
+cd ~/devDesk/
 echo &&
-echo \"bash\" &&
+echo "bash :" &&
 ls ~/devDesk/bash/ &&
 echo &&
-echo \"desks\" &&
+echo "desks :" &&
 ls ~/devDesk/desks
 ```
 

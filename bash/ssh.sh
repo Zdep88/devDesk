@@ -9,5 +9,4 @@ key=$(cat ~/.ssh/id_ed25519.pub) &&
 echo &&
 echo "Public SSH key :" &&
 echo "$key" &&
-echo &&
-read -p "Press enter to continue after copying the key to your GitHub account..."
+echo 
