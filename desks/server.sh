@@ -2,4 +2,12 @@ read -p "Enter your email : " email &&
 sh ~/devDesk/bash/up.sh &&
 sh ~/devDesk/bash/node.sh &&
 sh ~/devDesk/bash/ssh.sh "$email" &&
-cd ~/devDesk/
+sh ~/devDesk/bash/nginx.sh &&
+while true; do
+    read -p "Host a new site ? (y/n) " answer &&
+    if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
+        sh ~/devDesk/desks/site.sh
+    elif [[ "$answer" == "n" || "$answer" == "N" ]]; then
+        break
+    fi
+done
