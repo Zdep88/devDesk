@@ -1,4 +1,3 @@
 sudo apt install -y snapd &&
 sudo snap install --classic certbot &&
-sudo ln -s /snap/bin/certbot /usr/bin/certbot &&
-sudo certbot --nginx
+sudo ln -s /snap/bin/certbot /usr/bin/certbot

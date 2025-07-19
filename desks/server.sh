@@ -3,6 +3,7 @@ sh ~/devDesk/bash/up.sh &&
 sh ~/devDesk/bash/node.sh &&
 sh ~/devDesk/bash/ssh.sh "$email" &&
 sh ~/devDesk/bash/nginx.sh &&
+sh ~/devDesk/bash/certbot.sh &&
 while true; do
     read -p "Host a new site ? (y/n) " answer &&
     if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
@@ -11,3 +12,4 @@ while true; do
         break
     fi
 done
+sudo certbot --nginx
