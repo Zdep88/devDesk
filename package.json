@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cd ~/devDesk/bash/ && ls -l",
+    "start": "cd ~/devDesk/bash/ && echo \"bash\" && ls -l && echo \"desks\" && ls -l ../desks",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
