@@ -28,16 +28,7 @@ if [ "$site_type" = "static" ]; then
     sudo mkdir /var/www/$site_url &&
     sudo cp -r ~/code/$git_name/* /var/www/$site_url &&
     sudo tee /etc/nginx/sites-available/$site_url >/dev/null <<EOF
-server {
-        listen 80;
-        listen [::]:80;
-        root /var/www/$site_url;
-        index index.html;
-        server_name $site_url;
-        location / {
-                try_files \$uri \$uri/ =404;
-        }
-}
+
 EOF
 else
     echo "Ports already used :" &&
@@ -46,23 +37,7 @@ else
  
     sudo touch /etc/nginx/sites-available/$site_url &&
     sudo tee /etc/nginx/sites-available/$site_url >/dev/null <<EOF
-server {
-        listen 80;
-        listen [::]:80;
-        server_name $site_url;
-        
-        location / {
-                proxy_pass http://localhost:$app_port;
-                proxy_http_version 1.1;
-                proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection 'upgrade';
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header X-Forwarded-Proto $scheme;
-                proxy_cache_bypass $http_upgrade;
-        }
-}
+
 EOF
 fi
 sudo ln -s /etc/nginx/sites-available/$site_url /etc/nginx/sites-enabled/ &&
