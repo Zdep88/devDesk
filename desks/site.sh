@@ -13,16 +13,16 @@ sudo touch /etc/nginx/sites-available/$siteurl &&
 while true; do
     read -p "Site type ? (static/dynamic/custom) " answer &&
     sudo mkdir /var/www/$siteurl &&
-    if [[ "$answer" == "static" ]]; then
+    if [ "$answer" == "static" ]; then
         echo "static" &&
         sudo cp -r ~/$gitname/* /var/www/$siteurl &&
         sudo cp ~/devDesk/templates/static_server_bloc.txt /etc/nginx/sites-available/$siteurl &&
         sed -i "s/URL/$siteurl/g" ~/etc/nginx/sites-available/$siteurl &&
         break
-    elif [[ "$answer" == "dynamic" ]]; then
+    elif [ "$answer" == "dynamic" ]; then
         echo "dynamic" &&
         break
-    elif [[ "$answer" == "custom" ]]; then
+    elif [ "$answer" == "custom" ]; then
         echo "custom" &&
         break
     fi
