@@ -4,42 +4,15 @@
 sudo apt update &&
 sudo apt upgrade -y &&
 sudo apt install -y git &&
-cd ~/
-git clone https://github.com/Zdep88/devDesk.git
-cd devDesk
-npm run
-```
-
-## New desk
-
-```sh
-read -p "Enter your full name : " name &&
-read -p "Enter your email : " email &&
-sudo apt update &&
-sudo apt upgrade -y &&
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash &&
 source ~/.bashrc &&
 nvm install --lts &&
 nvm use --lts &&
 npm install -g npm@latest &&
-sudo apt install -y git &&
-git config --global user.name "$name" &&
-git config --global user.email "$email" &&
-sudo apt install -y nginx &&
-sudo sed -i 's/^[[:space:]]*#[[:space:]]*server_names_hash_bucket_size/        server_names_hash_bucket_size/' /etc/nginx/nginx.conf &&
-sudo rm /etc/nginx/sites-enabled/default &&
-sudo nginx -t &&
-sudo systemctl restart nginx &&
-sudo apt install -y snapd &&
-sudo snap install --classic certbot &&
-sudo ln -s /snap/bin/certbot /usr/bin/certbot &&
-ssh-keygen -t ed25519 -C "$email" -f ~/.ssh/id_ed25519 -N "" &&
-eval "$(ssh-agent -s)" &&
-ssh-add ~/.ssh/id_ed25519 &&
-key=$(cat ~/.ssh/id_ed25519.pub) &&
-echo &&
-echo "Public SSH key :" &&
-echo "$key"
+cd ~/
+git clone https://github.com/Zdep88/devDesk.git
+cd devDesk
+npm run
 ```
 
 ## New site
