@@ -7,21 +7,28 @@ if [ -z $siteurl ]; then
     read -p "New site URL : " siteurl
 fi &&
 gitname=$(basename $giturl .git) &&
-cd ~/ &&
+while true; do
+    read -p "Site type ? (static / dynamic / custom) " answer &&
+    if [[ "$answer" == "static" || "$answer" == "dynamic" || "$answer" == "custom"]]; then
+        break
+    fi
+done
+if [[ "$answer" == "static" ]]; then
+    echo "static"
+fi
+
+    # sudo cp -r ~/$gitname/* /var/www $siteurl &&
+    # sudo cp ~/devDesk/templates/ static_server_bloc.txt /etc/nginxsites-available/$siteurl &&
+    # sed -i "s/URL/$siteurl/g" ~/etcnginx/sites-available/$siteurl
+
+# cd ~/ &&
 # git clone $giturl &&
-echo "Cloned $gitname" &&
-echo "Creating site $siteurl" &&
-echo "gitname : $gitname"
 
-# if [[ "$answer" == "static" ]]; then
-#     echo "static" &&
-#     sudo cp -r ~/$gitname/* /var/www $siteurl &&
-#     sudo cp ~/devDesk/templates/ static_server_bloc.txt /etc/nginxsites-available/$siteurl &&
-#     sed -i "s/URL/$siteurl/g" ~/etcnginx/sites-available/$siteurl
-#     break
-# fi
 
-# sudo touch /etc/nginx/sites-available/$siteurl &&
+# sudo touch /etc/nginx/sites-available/$siteurl
+
+
+
 # sudo mkdir /var/www/$siteurl &&
 # while true; do
 #     read -p "Site type ? (static/dynamic/custom) " answer
