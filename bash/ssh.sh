@@ -10,4 +10,4 @@ echo &&
 echo "Public SSH key :" &&
 echo "$key" &&
 echo &&
-read -s -p "Press enter to continue after copying the key to your GitHub account..."
+read -p "Press enter to continue after copying the key to your GitHub account..."
