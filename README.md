@@ -12,7 +12,7 @@ npm install -g npm@latest &&
 cd ~/
 git clone https://github.com/Zdep88/devDesk.git
 cd devDesk
-npm run
+npm start
 ```
 
 ## New site
