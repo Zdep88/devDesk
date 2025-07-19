@@ -1,5 +1,15 @@
 # devDesk
 
+```sh
+sudo apt update &&
+sudo apt upgrade -y &&
+sudo apt install -y git &&
+cd ~/
+git clone https://github.com/Zdep88/devDesk.git
+cd devDesk
+npm run
+```
+
 ## New desk
 
 ```sh
