@@ -1,4 +1,4 @@
-read -p "Enter your full name : " name &&
-read -p "Enter your email : " email &&
+name=$1 &&
+email=$2 &&
 echo "name $name" &&
 echo "email $email"
