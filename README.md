@@ -4,8 +4,12 @@
 sudo apt install -y git &&
 cd ~/ &&
 git clone https://github.com/Zdep88/devDesk.git &&
-cd devDesk &&
-npm start
+echo &&
+echo \"bash\" &&
+ls ~/devDesk/bash/ &&
+echo &&
+echo \"desks\" &&
+ls ~/devDesk/desks
 ```
 
 ## Tmux
