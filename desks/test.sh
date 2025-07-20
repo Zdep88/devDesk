@@ -1,15 +1,4 @@
-while true; do
-    read -p "Host new site ? (y/n) : " choix
-    case $choix in
-        y|Y)
-            echo "new site"
-            ;;
-        n|N)
-            echo "stop"
-            break
-            ;;
-    esac
-done
+echo "Bienvenue dans le script de test !"
 # while true; do
 #     read -p "Votre choix (a/b/c) : " choix
 #     case $choix in
