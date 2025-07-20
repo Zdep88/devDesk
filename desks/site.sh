@@ -1,10 +1,10 @@
 giturl=$1 &&
-siteurl=$2 &&
+domain=$2 &&
 if [ -z $giturl ]; then
   read -p "Git ssh url : " giturl
 fi &&
-if [ -z $siteurl ]; then
-    read -p "New site URL : " siteurl
+if [ -z $domain ]; then
+    read -p "New domain : " domain
 fi &&
 gitname=$(basename $giturl .git) &&
 while true; do
@@ -22,22 +22,38 @@ while true; do
     esac
 done
 echo "GitUrl: $giturl" &&
-echo "SiteUrl: $siteurl" &&
+echo "Domain: $domain" &&
 echo "GitName: $gitname" &&
 echo "SiteType: $sitetype"
 
 case $sitetype in
     s|static)
-        sudo mkdir /var/www/$siteurl &&
-        sudo cp ~/devDesk/templates/static_server_bloc.txt /etc/nginx/sites-available/$siteurl
+        sudo mkdir /var/www/$domain &&
+        sudo cp ~/devDesk/templates/static_server_bloc.txt /etc/nginx/sites-available/$domain &&
+        sudo sed -i "s/example\.com/${domain}/g" /etc/nginx/sites-available/$domain &&
+        sudo ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/ &&
+        sudo nginx -t &&
+        sudo systemctl restart nginx &&
+        sudo certbot --nginx -d $domain
         ;;
     d|dynamic)
-        echo "Dynamic site setup not implemented yet."
+        sudo mkdir /var/www/$domain &&
+        sudo cp ~/devDesk/templates/dynamic_server_bloc.txt /etc/nginx/sites-available/$domain &&
+        # sudo sed -i "s/example\.com/${domain}/g" /etc/nginx/sites-available/$domain &&
+        # sudo ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/ &&
+        # sudo nginx -t &&
+        # sudo systemctl restart nginx &&
+        # sudo certbot --nginx -d $domain
         ;;
     c|custom)
         echo "Custom site setup not implemented yet."
         ;;
 esac
+
+sudo rm -r /var/www/$domain
+sudo rm /etc/nginx/sites-enabled/$domain
+sudo rm /etc/nginx/sites-available/$domain
+
 # sudo touch /etc/nginx/sites-available/$siteurl
 
 # cd ~/ &&
@@ -45,9 +61,6 @@ esac
     # sudo cp -r ~/$gitname/* /var/www $siteurl &&
     # sudo cp ~/devDesk/templates/ static_server_bloc.txt /etc/nginxsites-available/$siteurl &&
     # sed -i "s/URL/$siteurl/g" ~/etcnginx/sites-available/$siteurl
-
-
-
 
 
 
