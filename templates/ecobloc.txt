@@ -2,4 +2,4 @@
     "name"   : "",
     "cwd" : "",
     "script" : "npm start"
-}
+},
