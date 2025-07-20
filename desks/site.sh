@@ -8,18 +8,15 @@ if [ -z $siteurl ]; then
 fi &&
 gitname=$(basename $giturl .git) &&
 while true; do
-    read -p "Site type ? (static / dynamic / custom) " sitetype
+    read -p "Site type ? (s)tatic, (d)ynamic, (c)ustom " sitetype
     case $sitetype in
-        static)
-            echo "Exécution de la commande A..."
+        s|static)
             break
             ;;
-        dynamic)
-            echo "Exécution de la commande B..."
+        d|dynamic)
             break
             ;;
-        custom)
-            echo "Exécution de la commande C..."
+        c|custom)
             break
             ;;
     esac
@@ -27,18 +24,30 @@ done
 echo "GitUrl: $giturl" &&
 echo "SiteUrl: $siteurl" &&
 echo "GitName: $gitname" &&
-echo "SiteType: $choix"
+echo "SiteType: $sitetype"
 
+case $sitetype in
+    s|static)
+        sudo mkdir /var/www/$siteurl &&
+        sudo cp ~/devDesk/templates/static_server_bloc.txt /etc/nginx/sites-available/$siteurl
+        ;;
+    d|dynamic)
+        echo "Dynamic site setup not implemented yet."
+        ;;
+    c|custom)
+        echo "Custom site setup not implemented yet."
+        ;;
+esac
+# sudo touch /etc/nginx/sites-available/$siteurl
 
+# cd ~/ &&
+# git clone $giturl &&
     # sudo cp -r ~/$gitname/* /var/www $siteurl &&
     # sudo cp ~/devDesk/templates/ static_server_bloc.txt /etc/nginxsites-available/$siteurl &&
     # sed -i "s/URL/$siteurl/g" ~/etcnginx/sites-available/$siteurl
 
-# cd ~/ &&
-# git clone $giturl &&
 
 
-# sudo touch /etc/nginx/sites-available/$siteurl
 
 
 

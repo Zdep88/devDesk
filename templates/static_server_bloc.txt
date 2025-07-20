@@ -1,10 +1,11 @@
 server {
-        listen 80;
-        listen [::]:80;
-        root /var/www/URL;
-        index index.html;
-        server_name URL;
-        location / {
-                try_files \$uri \$uri/ =404;
-        }
+       listen 80;
+       listen [::]:80;
+       server_name example.com;
+       root /var/www/example.com;
+       index index.html;
+
+       location / {
+               try_files $uri $uri/ =404;
+       }
 }
