@@ -12,10 +12,10 @@ sudo usermod -aG sudo "$username"
 
 ```sh
 while true; do
-    read -p "(d)ev or (s)erv ? : " desktype
+    read -p "(d)ev or (s)erv ? : " desktype &&
     case $desktype in
         d|dev)
-            read -p "Enter your full name : " name
+            read -p "Enter your full name : " name &&
             break
         ;;
         s|serv)
@@ -66,11 +66,11 @@ esac
 ## new site
 
 ```sh
-read -p "Git ssh url : " giturl
-read -p "New domain : " domain
+read -p "Git ssh url : " giturl &&
+read -p "New domain : " domain &&
 gitname=$(basename $giturl .git) &&
 while true; do
-    read -p "Site type ? (s)tatic, (d)ynamic, (c)ustom " sitetype
+    read -p "Site type ? (s)tatic, (d)ynamic, (c)ustom " sitetype &&
     case $sitetype in
         s|static)
             break
@@ -110,15 +110,5 @@ sudo certbot --nginx -d $domain &&
 cd ~/devDesk &&
 git clone $giturl &&
 cd ~/devDesk/$gitname &&
-case $sitetype in
-    s|static)
-        sudo cp -r ~/devDesk/$gitname/* /var/www/$domain
-        ;;
-    d|dynamic)
-        npm run build &&
-        npm start
-        ;;
-    c|custom)
-        ;;
-esac
+tmux new -s $gitname
 ```
