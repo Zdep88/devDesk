@@ -58,7 +58,13 @@ case $desktype in
         sudo systemctl restart nginx
         sudo apt install -y snapd &&
         sudo snap install --classic certbot &&
-        sudo ln -s /snap/bin/certbot /usr/bin/certbot
+        sudo ln -s /snap/bin/certbot /usr/bin/certbot &&
+        npm install pm2 -g &&
+        pm2 init simple &&
+        sudo rm ~/ecosystem.config.js &&
+        
+        pm2 startup &&
+        sudo env PATH=$PATH:/home/zdep/.nvm/versions/node/v22.17.1/bin /home/zdep/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u zdep --hp /home/zdep
     ;;
 esac
 ```
