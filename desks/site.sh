@@ -44,23 +44,32 @@ sudo mkdir /var/www/$domain &&
 sudo ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/ &&
 sudo nginx -t &&
 sudo systemctl restart nginx &&
-sudo certbot --nginx -d $domain &&        
+sudo certbot --nginx -d $domain &&
 cd ~/devDesk &&
 git clone $giturl &&
 cd ~/devDesk/$gitname &&
+case $sitetype in
+    s|static)
+        sudo cp -r ~/devDesk/$gitname/* /var/www/$domain
+        ;;
+    d|dynamic)
+        npm run build &&
+        npm start
+        ;;
+    c|custom)
+        ;;
+esac
 
-
-# sudo cp -r ~/$gitname/* /var/www $siteurl &&
-    
+ 
 
 # if [ "$site_type" = "dynamic" ]; then
 #     tmux new -s $git_name
 
 
-read -p "Which domain to remove ? " domain &&
-sudo rm -r /var/www/$domain
-sudo rm /etc/nginx/sites-enabled/$domain
-sudo rm /etc/nginx/sites-available/$domain
-sudo nginx -t &&
-sudo systemctl restart nginx &&
-echo "Site $domain removed successfully."
+# read -p "Which domain to remove ? " domain &&
+# sudo rm -r /var/www/$domain
+# sudo rm /etc/nginx/sites-enabled/$domain
+# sudo rm /etc/nginx/sites-available/$domain
+# sudo nginx -t &&
+# sudo systemctl restart nginx &&
+# echo "Site $domain removed successfully."
