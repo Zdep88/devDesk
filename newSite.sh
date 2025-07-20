@@ -42,5 +42,7 @@ sudo certbot --nginx -d $domain &&
 cd ~/devDesk &&
 git clone $giturl &&
 cd ~/devDesk/$gitname &&
-tmux new -s $gitname
+tmux new -s $gitname &&
+sudo sed -i "s/example\.com/${domain}/g" /etc/nginx/sites-available/$domain
+
 
