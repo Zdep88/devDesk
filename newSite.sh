@@ -34,7 +34,7 @@ case $sitetype in
         sudo nano /etc/nginx/sites-available/$domain
         ;;
 esac
-sudo mkdir /var/www/$domain &&
+sudo mkdir /var/www/$gitname &&
 sudo ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/ &&
 sudo nginx -t &&
 sudo systemctl restart nginx &&
