@@ -7,22 +7,28 @@ if [ -z $siteurl ]; then
     read -p "New site URL : " siteurl
 fi &&
 gitname=$(basename $giturl .git) &&
+while true; do
+    read -p "Site type ? (static / dynamic / custom) " sitetype
+    case $sitetype in
+        static)
+            echo "Exécution de la commande A..."
+            break
+            ;;
+        dynamic)
+            echo "Exécution de la commande B..."
+            break
+            ;;
+        custom)
+            echo "Exécution de la commande C..."
+            break
+            ;;
+    esac
+done
 echo "GitUrl: $giturl" &&
 echo "SiteUrl: $siteurl" &&
-echo "GitName: $gitname"
+echo "GitName: $gitname" &&
+echo "SiteType: $choix"
 
-
-
-
-# while true; do
-#     read -p "Site type ? (static / dynamic / custom) " answer &&
-#     if [[ "$answer" == "static" || "$answer" == "dynamic" || "$answer" == "custom"]]; then
-#         break
-#     fi
-# done
-# if [[ "$answer" == "static" ]]; then
-#     echo "static"
-# fi
 
     # sudo cp -r ~/$gitname/* /var/www $siteurl &&
     # sudo cp ~/devDesk/templates/ static_server_bloc.txt /etc/nginxsites-available/$siteurl &&

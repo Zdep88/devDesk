@@ -1,18 +1,17 @@
 # read -p "Enter your email : " email &&
-# sh ~/devDesk/bash/up.sh &&
+sh ~/devDesk/bash/up.sh &&
 # sh ~/devDesk/bash/node.sh &&
 # sh ~/devDesk/bash/nginx.sh &&
 # sh ~/devDesk/bash/certbot.sh &&
 # sh ~/devDesk/bash/ssh.sh "$email" &&
-# cd ~/devDesk
+cd ~/devDesk
 while true; do
     read -p "Host new site ? (y/n) : " choix
     case $choix in
         y|Y)
-            sh ~/devDesk/desks/test.sh
+            sh ~/devDesk/desks/site.sh
             ;;
         n|N)
-            echo "stop"
             break
             ;;
     esac
