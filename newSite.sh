@@ -38,6 +38,7 @@ sudo mkdir /var/www/$domain &&
 sudo ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/ &&
 sudo nginx -t &&
 sudo systemctl restart nginx &&
+sudo certbot --nginx &&
 cd ~/devDesk &&
 git clone $giturl &&
 cd ~/devDesk/$gitname &&
