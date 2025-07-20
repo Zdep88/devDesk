@@ -1,3 +1,3 @@
-name   : "zdep.fr",
-cwd : "devDesk/zdep/",
+name   : "",
+cwd : "",
 script : "npm start",

@@ -42,4 +42,5 @@ sudo certbot --nginx -d $domain &&
 cd ~/devDesk &&
 git clone $giturl &&
 cd ~/devDesk/$gitname &&
-tmux new -s $gitname &&
+tmux new -s $gitname
+
