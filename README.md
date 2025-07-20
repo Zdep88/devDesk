@@ -42,8 +42,8 @@ nvm use --lts &&
 npm install -g npm@latest &&
 sudo apt install -y git &&
 cd ~/ &&
-cd ~/devDesk &&
 git clone git@github.com:Zdep88/devDesk.git &&
+cd ~/devDesk &&
 case $desktype in
     d|dev)
         git config --global user.name "$name" &&
