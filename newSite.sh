@@ -44,4 +44,7 @@ git clone $giturl &&
 cd ~/devDesk/$gitname &&
 tmux new -s $gitname &&
 sudo sed -i "/apps : \[/r /home/zdep/devDesk/templates/ecobloc.txt" /home/zdep/ecosystem.config.js &&
-sudo sed -i "s/name : "",/name : "${domain}",/g" /home/zdep/ecosystem.config.js
+sudo sed -i "s/name : \"\",/name : \"${domain}\",/g" /home/zdep/ecosystem.config.js &&
+sudo sed -i "s/cwd : \"\",/cwd : \"\/home\/zdep\/devDesk\/${gitname}\",/g" /home/zdep/ecosystem.config.js &&
+pm2 restart ecosystem.config.js &&
+pm2 save
