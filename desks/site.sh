@@ -59,17 +59,3 @@ case $sitetype in
     c|custom)
         ;;
 esac
-
- 
-
-# if [ "$site_type" = "dynamic" ]; then
-#     tmux new -s $git_name
-
-
-# read -p "Which domain to remove ? " domain &&
-# sudo rm -r /var/www/$domain
-# sudo rm /etc/nginx/sites-enabled/$domain
-# sudo rm /etc/nginx/sites-available/$domain
-# sudo nginx -t &&
-# sudo systemctl restart nginx &&
-# echo "Site $domain removed successfully."
