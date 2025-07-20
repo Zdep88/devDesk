@@ -9,7 +9,7 @@ while true; do
     read -p "Host new site ? (y/n) : " choix
     case $choix in
         y|Y)
-            sh ~/devDesk/desks/~test.sh
+            sh ~/devDesk/desks/test.sh
             ;;
         n|N)
             echo "stop"
