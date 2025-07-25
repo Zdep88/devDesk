@@ -43,11 +43,11 @@ npm install -g npm@latest &&
 sudo apt install -y git &&
 cd ~/ &&
 git clone git@github.com:Zdep88/devDesk.git &&
-cd ~/devDesk &&
 case $desktype in
     d|dev)
         git config --global user.name "$name" &&
         git config --global user.email "$email" &&
+        cd ~/devDesk &&
         code .
     ;;
     s|serv)
@@ -61,9 +61,19 @@ case $desktype in
         sudo ln -s /snap/bin/certbot /usr/bin/certbot &&
         npm install pm2 -g &&
         sudo cp ~/devDesk/templates/ecosystem.txt ~/ecosystem.config.js &&
-        cd ~/ &&
         pm2 startup &&
-        sudo env PATH=$PATH:/home/zdep/.nvm/versions/node/v22.17.1/bin /home/zdep/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u zdep --hp /home/zdep
+        sudo env PATH=$PATH:~/.nvm/versions/node/v22.17.1/bin ~/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp ~
     ;;
 esac
+while true; do
+    read -p "Setup new site ? (y/n)" now &&
+    case $now in
+        y|Y)
+            sh ~/devDesk/newSite.sh
+        ;;
+        n|N)
+            break
+        ;;
+    esac
+done
 ```
