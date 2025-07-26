@@ -1,3 +1,4 @@
+echo "test" &&
 echo &&
 read -p "Git ssh url : " giturl &&
 read -p "New domain : " domain &&
