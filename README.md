@@ -55,12 +55,12 @@ case $desktype in
         sudo sed -i 's/^[[:space:]]*#[[:space:]]*server_names_hash_bucket_size/        server_names_hash_bucket_size/' /etc/nginx/nginx.conf &&
         sudo rm /etc/nginx/sites-enabled/default &&
         sudo nginx -t &&
-        sudo systemctl restart nginx
+        sudo systemctl restart nginx &&
         sudo apt install -y snapd &&
         sudo snap install --classic certbot &&
         sudo ln -s /snap/bin/certbot /usr/bin/certbot &&
         npm install pm2 -g &&
-        sudo cp ~/devDesk/templates/ecosystem.txt ~/ecosystem.config.js &&
+        sudo cp ~/devDesk/ecosystem.txt ~/ecosystem.config.js &&
         pm2 startup &&
         sudo env PATH=$PATH:~/.nvm/versions/node/v22.17.1/bin ~/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp ~
     ;;
