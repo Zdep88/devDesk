@@ -26,10 +26,10 @@ while true; do
     esac
 done
 read -p "Enter your email : " email &&
-ssh-keygen -t ed25519 -C "$email" -f ~/.ssh/id_ed25519 -N "" &&
+ssh-keygen -t ed25519 -C "$email" -f /home/$USER/.ssh/id_ed25519 -N "" &&
 eval "$(ssh-agent -s)" &&
-ssh-add ~/.ssh/id_ed25519 &&
-key=$(cat ~/.ssh/id_ed25519.pub) &&
+ssh-add /home/$USER/.ssh/id_ed25519 &&
+key=$(cat /home/$USER/.ssh/id_ed25519.pub) &&
 echo &&
 echo "$key" &&
 read -p "Copy SSH key, then press any key to continue." -n 1 -s &&
@@ -44,13 +44,13 @@ nvm install --lts &&
 nvm use --lts &&
 npm install -g npm@latest &&
 sudo apt install -y git &&
-cd ~/ &&
+cd /home/$USER/ &&
 git clone git@github.com:Zdep88/devDesk.git &&
 case $desktype in
     d|dev)
         git config --global user.name "$name" &&
         git config --global user.email "$email" &&
-        cd ~/devDesk &&
+        cd /home/$USER/devDesk &&
         code . &&
         exit
     ;;
@@ -65,9 +65,9 @@ case $desktype in
         sudo ln -s /snap/bin/certbot /usr/bin/certbot &&
         npm install pm2@latest -g &&
         pm2 update &&
-        sudo cp ~/devDesk/ecosystem.txt ~/ecosystem.config.js &&
+        sudo cp /home/$USER/devDesk/ecosystem.txt /home/$USER/ecosystem.config.js &&
         pm2 startup &&
-        sudo env PATH=$PATH:~/.nvm/versions/node/v22.17.1/bin ~/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp ~ &&
+        sudo env PATH=$PATH:~/.nvm/versions/node/v22.17.1/bin ~/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp /home/$USER &&
         echo "Type this command to host a new site :" &&
         echo "sh ~/devDesk/newSite.sh" &&
         echo
