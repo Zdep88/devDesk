@@ -11,6 +11,7 @@ sudo usermod -aG sudo "$username"
 ## new desk
 
 ```sh
+echo &&
 while true; do
     read -p "(d)ev or (s)erv ? : " desktype &&
     case $desktype in
