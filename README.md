@@ -69,7 +69,19 @@ case $desktype in
         pm2 startup
         sudo env PATH=$PATH:~/.nvm/versions/node/v22.17.1/bin ~/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp /home/$USER &&
         echo &&
-        echo "Type this command to host a new site :" &&
+        while true; do
+            read -p "Host a new site now ? (y/n) : " now &&
+            case $now in
+                y|Y)
+                    sh /home/$USER/devDesk/newSite.sh
+                ;;
+                n|N)
+                    break
+                ;;
+            esac
+        done
+        echo &&
+        echo "Type this command to host a new site later :" &&
         echo "sh ~/devDesk/newSite.sh" &&
         echo
     ;;
