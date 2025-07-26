@@ -66,8 +66,9 @@ case $desktype in
         npm install pm2@latest -g &&
         pm2 update &&
         sudo cp /home/$USER/devDesk/ecosystem.txt /home/$USER/ecosystem.config.js &&
-        pm2 startup &&
+        pm2 startup
         sudo env PATH=$PATH:~/.nvm/versions/node/v22.17.1/bin ~/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp /home/$USER &&
+        echo &&
         echo "Type this command to host a new site :" &&
         echo "sh ~/devDesk/newSite.sh" &&
         echo
