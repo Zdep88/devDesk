@@ -31,6 +31,7 @@ key=$(cat ~/.ssh/id_ed25519.pub) &&
 echo &&
 echo "$key" &&
 read -p "Copy SSH key, then press any key to continue." -n 1 -s &&
+echo &&
 sudo apt update &&
 sudo apt upgrade -y &&
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash &&
