@@ -3,6 +3,7 @@
 ## sudoer
 
 ```sh
+echo &&
 read -p "Enter username: " username &&
 sudo adduser "$username" &&
 sudo usermod -aG sudo "$username"
@@ -67,6 +68,7 @@ case $desktype in
         sudo cp ~/devDesk/ecosystem.txt ~/ecosystem.config.js &&
         pm2 startup &&
         sudo env PATH=$PATH:~/.nvm/versions/node/v22.17.1/bin ~/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp ~ &&
+        echo &&
         while true; do
             read -p "Setup new site ? (y/n)" now &&
             case $now in
