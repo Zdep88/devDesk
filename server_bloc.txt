@@ -3,14 +3,15 @@ server {
     listen [::]:80;
     server_name example.com;
     
+    # Static part
     root /var/www/example.com;
     index index.html;
-
     location / {
         try_files $uri $uri/ =404;
     }
 
-    location /api {
+    # Dynamic part
+    location / {
         proxy_pass http://localhost:PORT;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
