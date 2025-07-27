@@ -21,9 +21,7 @@ tmux new -s $gitname &&
 cd /home/$USER/ &&
 sudo sed -i "/apps : \[/r /home/$USER/devDesk/ecobloc.txt" /home/$USER/ecosystem.config.js &&
 sudo sed -i "s/name : \"\",/name : \"${gitname}\",/g" /home/$USER/ecosystem.config.js &&
-sudo sed -i "s/cwd : \"\",/cwd : \"~\/${gitname}\",/g" /home/$USER/ecosystem.config.js &&
-sudo nano /home/$USER/ecosystem.config.js
-# pm2 restart ecosystem.config.js &&
-# pm2 save &&
-# pm2 startup &&
-# sudo env PATH=$PATH:~/.nvm/versions/node/v22.17.1/bin ~/.nvm/versions/node/v22.17.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp ~
+sudo sed -i "s/cwd : \"\",/cwd : \"${gitname}\",/g" /home/$USER/ecosystem.config.js &&
+sudo nano /home/$USER/ecosystem.config.js &&
+pm2 start /home/$USER/ecosystem.config.js &&
+pm2 save
